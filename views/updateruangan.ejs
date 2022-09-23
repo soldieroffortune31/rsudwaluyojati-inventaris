@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aplikasi Inventaris RSUD Waluyo Jati</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-2" href="#">
+          <img style="width: 50px; border-radius: 50px" src="../../assets/logoRS.jpg" alt="" />
+        </a>
+        <h5>Aplikasi Inventaris RSUD Waluyo Jati</h5>
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle me-2" style="font-size: 2rem; color: white; cursor: pointer"> </i>
+            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+            <span class="d-none d-md-block dropdown-toggle ps-2"><%= user.nama_petugas %></span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/petugas/updatepassword">
+                <i class="bi bi-gear"></i>
+                <span>Ganti Password</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Keluar</span>
+              </a>
+            </li>
+
+          </ul>
+      </div>
+    </nav>
+
+    <div class="row g-0">
+      <div class="col-md-2 bg-success p-3" style="--bs-bg-opacity: 0.5; min-height: 100vh">
+        <h5>Master Data</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active text-dark" aria-current="page" href="/barang">Data Barang</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/ruangan">Data Ruangan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/petugas">Data Petugas</a>
+          </li>
+        </ul>
+        <hr />
+        <h5>Transaksi</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/distribusi/pilih">Distribusi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/mutasi">Mutasi</a>
+          </li>
+        </ul>
+        <hr />
+        <h5>Laporan</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/laporan">Daftar Inventaris Ruangan</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10">
+        <div class="container-fluid">
+          <h3>Update Data Ruangan</h3>
+          <hr />
+          
+          <% dataRuangan %>
+          <form action="/ruangan/<%= dataRuangan.id_ruangan %>" method="post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row mb-3">
+                  <label for="inputIdRuangan" class="col-sm-3 col-form-label">ID Ruangan</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" id="inputIdRuangan" name="id_ruangan" value="<%= dataRuangan.id_ruangan %>" disabled/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNamaRuangan" class="col-sm-3 col-form-label">Nama Ruangan</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputNamaRuangan" name="nama_ruangan" value="<%= dataRuangan.nama_ruangan %>"/>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-9">
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <!-- <a href="dataruangan.html" type="submit" role="button" class="btn btn-success">Simpan</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>

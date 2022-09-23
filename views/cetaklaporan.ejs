@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= dataSort[0].nama_ruangan %></title>
+    <link rel="stylesheet" href="../../assets/css/style2.css" />
+  </head>
+  <body>
+    <div class="nav">
+      <img src="../../assets/logo.jpeg" alt="logo" />
+      <div class="nav_title" text-align="center">
+        <p>pemerintah kabupaten probolinggo</p>
+        <p>daftar inventaris ruangan</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content_data">
+        <p>Propinsi</p>
+        <p>Kab/Kota</p>
+        <p>Bidang</p>
+        <p>Unit Organisasi</p>
+        <p>Sub. Unit Organisasi</p>
+        <p>UPB</p>
+        <p>Ruangan</p>
+      </div>
+      <div class="content_info">
+        <p>: jawa timur</p>
+        <p>: pemerintah kabupaten probolinggo</p>
+        <p>: bidang kesehatan</p>
+        <p>: rsud waluyo jati kraksaan</p>
+        <p>: rsud waluyo jati kraksaan</p>
+        <p>: rsud waluyo jati kraksaan</p>
+        <p>: <%= dataSort[0].nama_ruangan %></p>
+      </div>
+    </div>
+
+    <table>
+      <tr>
+        <th>NO</th>
+        <th>NAMA BARANG</th>
+        <th>KODE BARANG</th>
+        <th>MERK</th>
+        <th>TIPE</th>
+        <th>JML</th>
+        <th>HARGA</th>
+        <th>THN</th>
+        <th>Smbr Dana</th>
+        <th>B</th>
+        <th>KB</th>
+        <th>RB</th>
+        <th>KET</th>
+      </tr>
+      <tbody>
+        <% let no = 1 %>
+        <% 
+          const rupiah = (number) =>{
+            var bilangan = number;
+
+            var reverse = bilangan.toString().split('').reverse().join(''),
+            ribuan  = reverse.match(/\d{1,3}/g);
+            ribuan  = ribuan.join('.').split('').reverse().join('');
+            return ribuan;  
+          }
+        %>
+        <% dataSort.forEach(element => { %>
+          <tr>
+            <td><%= no++ %></td>
+            <td><%= element.nama_barang %></td>
+            <td><%= element.kode_barang %></td>
+            <td><%= element.merk %></td>
+            <td><%= element.tipe %></td>
+            <td><%= element.jumlah %></td>
+            <td><%= rupiah(element.jumlah * element.harga) %></td>
+            <td><%= element.tahun %></td>
+            <td><%= element.sumber_dana %></td>
+            <td><%= element.baik %></td>
+            <td><%= element.kurang_baik %></td>
+            <td><%= element.rusak_berat %></td>
+            <td><%= element.keterangan %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <div class="paraf">
+      <div class="kasubag">
+        <div class="center">
+          <p>Mengetahui</p>
+          <p>Kasubag Umum dan Perlengkapan</p>
+        </div>
+
+        <div>
+          <p class="nama_kasubag"><u>AGUS BUDI RAHARDJO, S.Sos, MM</u></p>
+          <p class="center">NIP. 19650817 1987031 025</p>
+        </div>
+      </div>
+      <div class="penanggungjawab">
+        <div class="krakasan">
+          <div>
+            <p>KRAKASAN, <%= dataSort[0].tanggal %></p>
+            <p>Penanggung Jawab Ruangan</p>
+          </div>
+          <div>
+            <p><u>......................................................</u></p>
+            <p>NIP: ..............................................</p>
+            <p class="text-center">Pengurus Barang</p>
+          </div>
+        </div>
+        <div class="pengurus_barang">
+          <p class="text-center"></p>
+          <div class="text-center">
+            <p><u>REKYAN SESUTYO EDIY, ST</u></p>
+            <p>NIP 19810523 201001 2 010</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

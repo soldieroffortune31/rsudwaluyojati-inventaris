@@ -1,0 +1,84 @@
+.nav {
+  display: flex;
+  height: 80px;
+}
+
+.nav_title {
+  text-align: center;
+  text-transform: uppercase;
+  padding-left: 570px;
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  margin-top: 20px;
+}
+
+.content_info {
+  padding-left: 100px;
+  text-transform: uppercase;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.paraf {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
+}
+
+.kasubag {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+}
+
+.nama_kasubag {
+  font-weight: bold;
+}
+
+.mengetahui {
+  padding-left: 80px;
+}
+
+.center {
+  text-align: center;
+}
+
+.penanggungjawab {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.krakasan {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  height: 100px;
+}
+
+.pengurus_barang {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
+
+.text-center {
+  text-align: center;
+}

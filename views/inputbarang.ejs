@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aplikasi Inventaris RSUD Waluyo Jati</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-2" href="#">
+          <img style="width: 50px; border-radius: 50px" src="../assets/logoRS.jpg" alt="" />
+        </a>
+        <h5>Aplikasi Inventaris RSUD Waluyo Jati</h5>
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle me-2" style="font-size: 2rem; color: white; cursor: pointer"> </i>
+            <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+            <span class="d-none d-md-block dropdown-toggle ps-2"><%= user.nama_petugas %></span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+        
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/petugas/updatepassword">
+                <i class="bi bi-gear"></i>
+                <span>Ganti Password</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Keluar</span>
+              </a>
+            </li>
+
+          </ul>
+      </div>
+    </nav>
+
+    <div class="row g-0">
+      <div class="col-md-2 bg-success p-3" style="--bs-bg-opacity: 0.5; min-height: 100vh">
+        <h5>Master Data</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active text-dark" aria-current="page" href="/barang">Data Barang</a>
+          </li>
+          <% if(user.level === "Admin") { %>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="/ruangan">Data Ruangan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="/petugas">Data Petugas</a>
+            </li>
+          <% } %>
+        </ul>
+        <hr />
+        <h5>Transaksi</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/distribusi/pilih">Distribusi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/mutasi">Mutasi</a>
+          </li>
+        </ul>
+        <hr />
+        <h5>Laporan</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="/laporan">Daftar Inventaris Ruangan</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10">
+        <div class="container-fluid">
+          <h3>Input Data Barang</h3>
+          <hr />
+          <form action="/barang" method="post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row mb-3">
+                  <label for="inputIdBarang" class="col-sm-3 col-form-label">Kode Barang</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputIdBarang" name="kode_barang"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNamaBarang" class="col-sm-3 col-form-label">Nama Barang</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputNamaBarang" name="nama_barang"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputMerk" class="col-sm-3 col-form-label">Merk</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputMerk" name="merk"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputTipe" class="col-sm-3 col-form-label">Tipe</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputTipe" name="tipe"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputJumlah" class="col-sm-3 col-form-label">Jumlah</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="inputJumlah" name="jumlah" min="0"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputHarga" class="col-sm-3 col-form-label">Harga (satuan)</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputHarga" name="harga"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row mb-3">
+                  <label for="inputTahun" class="col-sm-3 col-form-label">Tahun</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputTahun" name="tahun"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputSumberDana" class="col-sm-3 col-form-label">Sumber Dana</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputSumberDana" name="sumber_dana"/>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Masuk</label>
+                  <div class="col-sm-9">
+                    <input type="date" class="form-control" id="tanggal" name="tanggal"/>
+                  </div>
+                </div>
+
+                <!-- <div class="row mb-3">
+                  <label for="uploadImage" class="col-sm-3 form-label">Foto</label>
+                  <div class="col-sm-5">
+                    <input class="form-control" type="file" id="uploadImage" />
+                  </div>
+                </div> -->
+                <div class="row mb-3">
+                  <label for="inputKeterangan" class="col-sm-3 col-form-label">Keterangan</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" name="keterangan" id="inputKeterangan" cols="30" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-9">
+                    <button type = "submit" role="button" type="submit" class="btn btn-success">Simpan</button>
+                    <!-- <a href="databarang.html" role="button" type="submit" class="btn btn-success">Lihat Daftar Barang</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+      var dengan_rupiah = document.getElementById('inputHarga');
+      dengan_rupiah.addEventListener('keyup', function(e){
+        dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
+      });
+  
+      function formatRupiah(angka, prefix){
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+        split = number_string.split(','),
+        sisa  = split[0].length % 3,
+        rupiah  = split[0].substr(0, sisa),
+        ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
+      
+        if (ribuan) {
+          separator = sisa ? '.' : '';
+          rupiah += separator + ribuan.join('.');
+        }
+    
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+      }
+    </script>
+  </body>
+</html>
